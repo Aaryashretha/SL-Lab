@@ -1,5 +1,5 @@
 <?php
-    // With the numeric multidimensional array and for loop..
+ 
     $studentinfo = [
         ["1", "Rajesh", "25","56", "89","57","64","98","364","pass"],
         ["2", "hari", "5", "56", "89","57","64","98","364","pass"],
