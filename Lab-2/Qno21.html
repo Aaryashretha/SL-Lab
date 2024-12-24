@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function getWeekendDate() {
+    let today = new Date();
+    let daysUntilSaturday = (6 - today.getDay() + 7) % 7;
+    let saturday = new Date(today);
+    saturday.setDate(today.getDate() + daysUntilSaturday);
+    return saturday;
+}
+console.log(getWeekendDate());
+        </script>
+    </body>
+    </html>

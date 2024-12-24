@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // a. Create an empty object called dog
+const dog = {};
+
+// b. Print the dog object on the console
+console.log(dog);
+
+// c. Add properties to the dog object
+dog.name = "Buddy";
+dog.legs = 4;
+dog.color = "Brown";
+dog.age = 3;
+dog.bark = function () {
+    return "Woof Woof";
+};
+
+// d. Get properties and method values from the dog object
+console.log(dog.name); // Buddy
+console.log(dog.legs); // 4
+console.log(dog.color); // Brown
+console.log(dog.age); // 3
+console.log(dog.bark()); // Woof Woof
+
+// e. Add new properties to the dog object
+dog.breed = "Golden Retriever";
+dog.getDogInfo = function () {
+    return `Name: ${this.name}, Breed: ${this.breed}, Color: ${this.color}, Age: ${this.age}, Legs: ${this.legs}`;
+};
+
+console.log(dog.getDogInfo());
+
+        </script>
+    </body>
+    </html>
