@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = new mysqli('localhost', 'root', '', 'aarya_20'); // Adjust database credentials
+$conn = new mysqli('localhost', 'root', '', 'aarya_20'); 
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
