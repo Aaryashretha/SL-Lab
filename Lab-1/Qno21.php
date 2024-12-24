@@ -2,8 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['string']) && !empty(trim($_POST['string']))) {
         $string = $_POST['string'];
-        
-        // Function to modify the string as per the requirement
+
         function modifyString($str) {
             // Get the last character of the string
             $lastChar = $str[strlen($str) - 1];
