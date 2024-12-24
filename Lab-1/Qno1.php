@@ -1,6 +1,6 @@
 <?php
 
-// Variables for different data types
+
 $integer = 40;
 $float = 3.14;
 $string = "Aarya Shrestha";
