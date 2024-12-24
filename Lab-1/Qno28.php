@@ -1,5 +1,5 @@
 <?php
-// Initialize error array
+
 $error = [];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
