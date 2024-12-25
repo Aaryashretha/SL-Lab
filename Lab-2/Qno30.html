@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countries Table</h1>
+    <table id="countriesTable">
+    </table>
+    <script>
+        const countries = [
+    "Nepal", "Spain", "Germany", "Portugal", "USA", "Italy",
+    "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas",
+    "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
+    "Benin", "Bhutan", "Bolivia", "Russia", "Botswana", "Brazil",
+    "Brunei", "Bulgaria", "France", "Burundi", "Cabo Verde", "Cambodia",
+    "Cameroon", "Canada", "Korea", "Chad", "Chile", "China",
+    "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba",
+    "Cyprus", "Japan", "Denmark", "Djibouti", "Dominica", "Norway",
+    "Ecuador", "Egypt", "Uk", "India"
+];
+
+// Create table rows and cells
+const table = document.getElementById("countriesTable");
+let row;
+
+// Add table header
+row = table.insertRow();
+row.innerHTML = `<th>Countries</th>`;
+
+for (let i = 0; i < countries.length; i++) {
+    if (i % 6 === 0) {
+        row = table.insertRow(); // Create a new row every 6 countries
+    }
+    const cell = row.insertCell();
+    cell.textContent = countries[i];
+}
+
+    </script>
+</body>
+</html>

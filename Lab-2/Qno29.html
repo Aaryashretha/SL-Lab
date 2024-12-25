@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Numbers</title>
+</head>
+<body>
+    <div id="container" style="display: flex; flex-wrap: wrap; gap: 5px;"></div>
+
+    <script>
+        const container = document.getElementById('container');
+
+        // Function to check if a number is prime
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        // Create and style numbers dynamically
+        for (let i = 0; i <= 100; i++) {
+            const div = document.createElement('div');
+            div.textContent = i;
+            div.style.width = '30px';
+            div.style.height = '30px';
+            div.style.display = 'flex';
+            div.style.justifyContent = 'center';
+            div.style.alignItems = 'center';
+            div.style.color = 'white';
+            div.style.fontWeight = 'bold';
+
+            if (isPrime(i)) {
+                div.style.backgroundColor = 'red'; // Prime
+            } else if (i % 2 === 0) {
+                div.style.backgroundColor = 'green'; // Even
+            } else {
+                div.style.backgroundColor = 'yellow'; // Odd
+            }
+
+            container.appendChild(div);
+        }
+    </script>
+</body>
+</html>

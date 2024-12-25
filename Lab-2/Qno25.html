@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const personAccount = {
+    firstName: "Aarya",
+    lastName: "Shrestha",
+    incomes: [
+        { description: "Salary", amount: 3000 },
+        { description: "Freelancing", amount: 1200 }
+    ],
+    expenses: [
+        { description: "Rent", amount: 1000 },
+        { description: "Groceries", amount: 500 }
+    ],
+    totalIncome: function () {
+        return this.incomes.reduce((total, income) => total + income.amount, 0);
+    },
+    totalExpense: function () {
+        return this.expenses.reduce((total, expense) => total + expense.amount, 0);
+    },
+    accountInfo: function () {
+        return `Account Owner: ${this.firstName} ${this.lastName}`;
+    },
+    addIncome: function (description, amount) {
+        this.incomes.push({ description, amount });
+    },
+    addExpense: function (description, amount) {
+        this.expenses.push({ description, amount });
+    },
+    accountBalance: function () {
+        return this.totalIncome() - this.totalExpense();
+    }
+};
+
+// Example Usage:
+console.log(personAccount.accountInfo());
+console.log("Total Income:", personAccount.totalIncome());
+console.log("Total Expense:", personAccount.totalExpense());
+console.log("Account Balance:", personAccount.accountBalance());
+
+        </script>
+    </body>
+    </html>

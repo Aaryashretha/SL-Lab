@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function tenMostFrequentWords(inputString) {
+    // Split the input string into words and clean up punctuation
+    const words = inputString
+        .toLowerCase()
+        .replace(/[^\w\s]/g, '') // Remove punctuation
+        .split(/\s+/);           // Split by spaces
+
+    // Count the frequency of each word
+    const wordCounts = {};
+    words.forEach(word => {
+        wordCounts[word] = (wordCounts[word] || 0) + 1;
+    });
+
+    // Convert the wordCounts object to an array and sort by frequency
+    const sortedWords = Object.entries(wordCounts)
+        .sort((a, b) => b[1] - a[1]);
+
+    // Get the top 10 most frequent words
+    return sortedWords.slice(0, 10).map(([word, count]) => ({ word, count }));
+}
+
+// Example usage with user input
+const userInput = prompt("Enter a string to find the ten most frequent words:");
+const result = tenMostFrequentWords(userInput);
+console.log("The ten most frequent words are:", result);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Application</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Asabeneh Yetayeh challenges in 2020</h1>
+        <h2>30DaysOfJavaScript Challenge</h2>
+        <ul>
+            <li>Python Challenge Done</li>
+            <li>JavaScript Challenge Ongoing</li>
+            <li>React Challenge Coming</li>
+            <li>FullStack Challenge Coming</li>
+            <li>DataAnalysis Challenge Coming</li>
+            <li>ReactNative Challenge Coming</li>
+            <li>MachineLearning Challenge Coming</li>
+        </ul>
+    </div>
+
+    <script>
+        const year = document.querySelector('h1');
+        const time = document.querySelector('h2');
+        const challenges = document.querySelectorAll('li');
+
+        // a. Change year color every 1 second
+        setInterval(() => {
+            year.style.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        }, 1000);
+
+        // b. Change background of date/time every 1 second
+        setInterval(() => {
+            time.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        }, 1000);
+
+        // c. Apply styles based on challenge status
+        challenges.forEach(challenge => {
+            if (challenge.textContent.includes('Done')) {
+                challenge.style.backgroundColor = 'green';
+            } else if (challenge.textContent.includes('Ongoing')) {
+                challenge.style.backgroundColor = 'yellow';
+            } else {
+                challenge.style.backgroundColor = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
