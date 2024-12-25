@@ -8,11 +8,11 @@
 <body>
     <script>
         function tenMostFrequentWords(inputString) {
-    // Split the input string into words and clean up punctuation
+    
     const words = inputString
         .toLowerCase()
-        .replace(/[^\w\s]/g, '') // Remove punctuation
-        .split(/\s+/);           // Split by spaces
+        .replace(/[^\w\s]/g, '') 
+        .split(/\s+/);           
 
     // Count the frequency of each word
     const wordCounts = {};
