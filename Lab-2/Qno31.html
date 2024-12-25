@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers with Colors</title>
+    <style>
+        .even { color: blue; }
+        .odd { color: green; }
+        .prime { color: red; }
+        .number-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .number {
+            font-size: 18px;
+            padding: 5px;
+            text-align: center;
+            width: 50px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Numbers with Colors</h1>
+    <input type="number" id="userInput" placeholder="Enter a number" />
+    <button onclick="generateNumbers()">Generate</button>
+    <div id="numbers" class="number-container"></div>
+    <script>
+      function isPrime(num) {
+    if (num < 2) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+
+function generateNumbers() {
+    const container = document.getElementById('numbers');
+    const userInput = document.getElementById('userInput').value;
+    const maxNumber = parseInt(userInput, 10);
+
+    if (isNaN(maxNumber) || maxNumber <= 0) {
+        alert('Please enter a valid positive number.');
+        return;
+    }
+
+    container.innerHTML = ''; // Clear existing numbers
+
+    for (let i = 1; i <= maxNumber; i++) {
+        const numberDiv = document.createElement('div');
+        numberDiv.textContent = i;
+        numberDiv.className = 'number';
+
+        if (isPrime(i)) {
+            numberDiv.classList.add('prime');
+        } else if (i % 2 === 0) {
+            numberDiv.classList.add('even');
+        } else {
+            numberDiv.classList.add('odd');
+        }
+
+        container.appendChild(numberDiv);
+    }
+}
+  
+    </script>
+</body>
+</html>
