@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #b19cd9;
+}
+
+.digital-clock {
+    font-family: 'Arial', sans-serif;
+    font-size: 4rem;
+    color: white;
+    background: #4c4c4c;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}

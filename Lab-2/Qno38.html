@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Interactions</title>
+    <style>
+      .button-container {
+        display: flex;
+      }
+      .button {
+        padding: 10px 20px;
+        margin: 5px;
+        background-color: #ccc;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-container">
+      <button class="button" id="changeBackground">Change Background</button>
+      <button class="button" id="changeParagraphBackground">
+        Change Paragraph Background
+      </button>
+      <button class="button" id="hideParagraph">Hide Paragraph</button>
+      <button class="button" id="showParagraph">Show Paragraph</button>
+      <button class="button" id="increaseFontSize">Increase Font Size</button>
+      <button class="button" id="decreaseFontSize">Decrease Font Size</button>
+      <button class="button" id="resetFontSize">Reset Font Size</button>
+      <button class="button" id="changeTextColor">Change Text Color</button>
+    </div>
+
+    <p id="myParagraph">This is a sample paragraph.</p>
+
+    <script>
+      const changeBackgroundBtn = document.getElementById("changeBackground");
+      const changeParagraphBackgroundBtn = document.getElementById(
+        "changeParagraphBackground"
+      );
+      const hideParagraphBtn = document.getElementById("hideParagraph");
+      const showParagraphBtn = document.getElementById("showParagraph");
+      const increaseFontSizeBtn = document.getElementById("increaseFontSize");
+      const decreaseFontSizeBtn = document.getElementById("decreaseFontSize");
+      const resetFontSizeBtn = document.getElementById("resetFontSize");
+      const changeTextColorBtn = document.getElementById("changeTextColor");
+      const paragraph = document.getElementById("myParagraph");
+
+      let fontSize = 12; // Initial font size
+
+      changeBackgroundBtn.addEventListener("click", () => {
+        document.body.style.backgroundColor = getRandomColor();
+      });
+
+      changeParagraphBackgroundBtn.addEventListener("click", () => {
+        paragraph.style.backgroundColor = getRandomColor();
+      });
+
+      hideParagraphBtn.addEventListener("click", () => {
+        paragraph.style.display = "none";
+      });
+
+      showParagraphBtn.addEventListener("click", () => {
+        paragraph.style.display = "block";
+      });
+
+      increaseFontSizeBtn.addEventListener("click", () => {
+        fontSize += 2;
+        paragraph.style.fontSize = fontSize + "pt";
+      });
+
+      decreaseFontSizeBtn.addEventListener("click", () => {
+        if (fontSize > 2) {
+          fontSize -= 2;
+          paragraph.style.fontSize = fontSize + "pt";
+        }
+      });
+
+      resetFontSizeBtn.addEventListener("click", () => {
+        fontSize = 12;
+        paragraph.style.fontSize = fontSize + "pt";
+      });
+
+      changeTextColorBtn.addEventListener("click", () => {
+        paragraph.style.color = getRandomColor();
+      });
+
+      function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    </script>
+  </body>
+</html>

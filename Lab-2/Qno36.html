@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Management</title>
+</head>
+<body>
+    <h2>Cookie Management</h2>
+    <form id="cookieForm">
+        <label>Key: <input type="text" id="key" required></label><br><br>
+        <label>Value: <input type="text" id="value" required></label><br><br>
+        <button type="button" onclick="setCookie()">Set Cookie</button>
+        <button type="button" onclick="getCookie()">Get Cookie</button>
+        <button type="button" onclick="deleteCookie()">Delete Cookie</button>
+        <button type="button" onclick="deleteAllCookies()">Delete All Cookies</button>
+    </form>
+    <br>
+    <button onclick="displayCookies()">Display All Cookies</button>
+    <div id="cookieTable"></div>
+    <p id="output"></p>
+    <script>
+        function setCookie() {
+    const key = document.getElementById('key').value;
+    const value = document.getElementById('value').value;
+    document.cookie = `${key}=${value};path=/`;
+    document.getElementById('output').textContent = `Cookie set: ${key}=${value}`;
+}
+
+function getCookie() {
+    const key = document.getElementById('key').value;
+    const cookies = document.cookie.split('; ');
+    const cookie = cookies.find(row => row.startsWith(`${key}=`));
+    const value = cookie ? cookie.split('=')[1] : 'Not found';
+    document.getElementById('output').textContent = `Cookie value: ${value}`;
+}
+
+function displayCookies() {
+    const cookies = document.cookie.split('; ');
+    let tableHTML = '<table border="1"><tr><th>Key</th><th>Value</th></tr>';
+    cookies.forEach(cookie => {
+        const [key, value] = cookie.split('=');
+        tableHTML += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    });
+    tableHTML += '</table>';
+    document.getElementById('cookieTable').innerHTML = tableHTML;
+}
+
+function deleteCookie() {
+    const key = document.getElementById('key').value;
+    document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    document.getElementById('output').textContent = `Cookie deleted: ${key}`;
+}
+
+function deleteAllCookies() {
+    const cookies = document.cookie.split('; ');
+    cookies.forEach(cookie => {
+        const key = cookie.split('=')[0];
+        document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    });
+    document.getElementById('output').textContent = 'All cookies deleted';
+}
+
+    </script>
+</body>
+</html>

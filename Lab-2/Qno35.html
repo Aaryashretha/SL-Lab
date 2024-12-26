@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Clock</title>
+    <style>
+      @font-face {
+        font-family: digital;
+        src: url("font/digital.ttf");
+      }
+      body {
+        background-image: linear-gradient(to right, rgb(160, 63, 144), purple);
+        height: 100vh;
+      }
+      h1 {
+        font-size: 3rem;
+        color: white;
+        display: block;
+        text-transform: uppercase;
+      }
+      .clock {
+        font-size: 5rem;
+        color: white;
+      }
+      span {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        color: black;
+        font-size: 5rem;
+        font-family: digital;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Digital Clock</h1>
+      <div class="clock">
+        <span class="hour"></span> : <span class="min"></span> :
+        <span class="sec"></span>
+      </div>
+
+      <script>
+        const clock = document.querySelector(".clock");
+        const hour = document.querySelector(".hour");
+        const min = document.querySelector(".min");
+        const sec = document.querySelector(".sec");
+
+        function updateTime() {
+          const now = new Date();
+          const hours = String(now.getHours()).padStart(2, "0");
+          const minutes = String(now.getMinutes()).padStart(2, "0");
+          const seconds = String(now.getSeconds()).padStart(2, "0");
+          hour.innerText = hours;
+          min.innerText = minutes;
+          sec.innerText = seconds;
+        }
+        setInterval(updateTime, 1000); // Update every second
+      </script>
+    </div>
+  </body>
+</html>

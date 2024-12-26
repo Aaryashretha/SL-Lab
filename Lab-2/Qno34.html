@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="css/Qno34.css" />
+  </head>
+  <body>
+    <div class="clock">
+      <div class="hour"></div>
+      <div class="minute"></div>
+      <div class="second"></div>
+      <div class="number" style="--i: 1">1</div>
+      <div class="number" style="--i: 2">2</div>
+      <div class="number" style="--i: 3">3</div>
+      <div class="number" style="--i: 4">4</div>
+      <div class="number" style="--i: 5">5</div>
+      <div class="number" style="--i: 6">6</div>
+      <div class="number" style="--i: 7">7</div>
+      <div class="number" style="--i: 8">8</div>
+      <div class="number" style="--i: 9">9</div>
+      <div class="number" style="--i: 10">10</div>
+      <div class="number" style="--i: 11">11</div>
+      <div class="number" style="--i: 12">12</div>
+    </div>
+    <script>
+      setInterval(() => {
+        const hourHand = document.querySelector(".hour");
+        const minuteHand = document.querySelector(".minute");
+        const secondHand = document.querySelector(".second");
+
+        const now = new Date();
+        const hours = now.getHours(); // Get current hour
+        const minutes = now.getMinutes(); // Get current minute
+        const seconds = now.getSeconds(); // Get current second
+
+        // Calculate the degree for each hand
+        const hourDeg = (hours % 12) * 30 + minutes * 0.5 - 90; // Adjusted for 12-hour format and minute contribution
+
+        const minuteDeg = minutes * 6 + seconds * 0.1 - 90; // Each minute is 6 degrees, with seconds contributing
+        const secondDeg = seconds * 6 - 90; // Each second is 6 degrees
+
+        // Apply rotation to the clock hands
+        hourHand.style.transform = `rotate(${hourDeg}deg)`;
+
+        minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+        secondHand.style.transform = `rotate(${secondDeg}deg)`;
+        console.log(
+          `Hour Degree: ${hourDeg}, Minutes: ${minutes}, Seconds: ${seconds}`
+        );
+      }, 1000);
+    </script>
+  </body>
+</html>

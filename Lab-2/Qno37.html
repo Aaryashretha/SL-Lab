@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clone and Remove Element</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      table {
+        width: 50%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+      }
+      button {
+        margin: 5px;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="dataTable">
+      <thead>
+        <th>No</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>
+            <select>
+              <option value="">Select Product</option>
+              <option value="product1">Product 1</option>
+              <option value="product2">Product 2</option>
+              <option value="product3">Product 3</option>
+            </select>
+          </td>
+          <td><input type="text" /></td>
+          <td><button class="trash-icon">🗑️</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="addNewButton">Add new</button>
+    <script>
+      // Get references to necessary elements
+      const tableBody = document.querySelector("tbody");
+      const addNewButton = document.getElementById("addNewButton");
+      const tdfirst = document.querySelector("td:first-child");
+      tdfirst.textContent = "1";
+      // Function to clone a row
+      function cloneRow() {
+        const lastRow = tableBody.lastElementChild;
+        const newRow = lastRow.cloneNode(true); // Clone the last row
+
+        // Reset input values (except selected product)
+        newRow.querySelectorAll("input").forEach((input) => {
+          input.value = "";
+        });
+
+        // Copy selected product value
+        const selectedProduct = newRow.querySelector("select");
+        selectedProduct.value = lastRow.querySelector("select").value;
+
+        // Update row number if needed
+        const rowNumberCell = newRow.querySelector("td:first-child");
+        rowNumberCell.textContent = tableBody.rows.length + 1;
+
+        tableBody.appendChild(newRow);
+      }
+
+      // Function to remove a row
+      function removeRow(event) {
+        if (event.target.classList.contains("trash-icon")) {
+          const rowToRemove = event.target.closest("tr");
+          rowToRemove.remove();
+
+          // Update row numbers after removal
+          const rows = tableBody.querySelectorAll("tr");
+          rows.forEach((row, index) => {
+            row.querySelector("td:first-child").textContent = index + 1;
+          });
+        }
+      }
+
+      // Event listeners
+      addNewButton.addEventListener("click", cloneRow);
+      tableBody.addEventListener("click", removeRow);
+    </script>
+  </body>
+</html>
